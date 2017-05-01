@@ -1,8 +1,14 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegexBasic {
 
     public static Boolean has_ssn(String input) {
-        return true;
+        Pattern p = Pattern.compile("\\d{3}-\\d{2}-\\d{4}");
+        Matcher m = p.matcher(input);
+        Boolean b = m.find();
+        System.out.print(b);
+        return b;
     }
 
 //# Find and return a Social Security Number.
