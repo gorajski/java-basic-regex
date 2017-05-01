@@ -1,6 +1,6 @@
 
 public class RegexBasic {
-//    def has_ssn?(string)
+
     public static Boolean has_ssn(String input) {
         return true;
     }
