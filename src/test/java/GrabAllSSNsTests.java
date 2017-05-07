@@ -14,6 +14,6 @@ public class GrabAllSSNsTests {
     @Test
     @DisplayName("returns an empty collection if does not find any SSNs")
     public void falseGrabsAll() {
-        assertArrayEquals(new String[0], RegexBasic.grab_all_ssns("The number is XXX-XX-1422"));
+        assertArrayEquals(new String[1], RegexBasic.grab_all_ssns("The number is XXX-XX-1422"));
     }
 }
