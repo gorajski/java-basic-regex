@@ -42,11 +42,24 @@ public class RegexBasic {
 
 //# Obfuscate all Social Security Numbers. Example: XXX-XX-4430.
 //    def hide_all_ssns(string)
-    public static String[] hide_all_ssns(String input) {
-        String[] x = new String[2];
-        x[0] = "chyea";
-        x[1] = "hov";
-        return x;
+    public static String hide_all_ssns(String input) {
+        Pattern p = Pattern.compile("\\d{3}-\\d{2}-\\d{4}");
+        Matcher m = p.matcher(input);
+        Integer lastPosition = 0;
+        StringBuilder outputBuffer = new StringBuilder();
+
+
+        while(m.find()) {
+            outputBuffer.append(input.substring(lastPosition, m.start()));
+            outputBuffer.append("XXX-XX-");
+            outputBuffer.append(input.substring(m.end()-4, m.end()));
+            lastPosition = m.end();
+        }
+
+        if(!lastPosition.equals(input.length())) {
+            outputBuffer.append(input.substring(lastPosition, input.length()));
+        }
+        return outputBuffer.toString();
     }
 
 //# Format all Social Security Numbers to use single dashes for delimiters:
